@@ -1,0 +1,1 @@
+export type { AuthDialogType } from "./AuthDialog";

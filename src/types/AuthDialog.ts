@@ -1,0 +1,1 @@
+export type AuthDialogType = "register" | "login" | "forgot-password" | null;
