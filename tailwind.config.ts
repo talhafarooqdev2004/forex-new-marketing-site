@@ -42,8 +42,16 @@ const config: Config = {
 				"darkGrey": "#1A1D23",
 				"charcoal": "#121417",
 				"greenDark": "#00C663",
-				background: 'hsl(var(--background))',
-				foreground: 'hsl(var(--foreground))',
+				background: "rgb(var(--background) / <alpha-value>)",
+				foreground: "rgb(var(--foreground) / <alpha-value>)",
+				primary: "rgb(var(--primary) / <alpha-value>)",
+				stroke: "rgb(var(--stroke) / <alpha-value>)",
+				switchTrack: "rgb(var(--switch-track) / <alpha-value>)",
+				sectionBg: "rgb(var(--section-bg) / <alpha-value>)",
+				ctaBg: "rgb(var(--cta-bg) / <alpha-value>)",
+				headerLoginText: "rgb(var(--header-login-text) / <alpha-value>)",
+				watchVideoBg: "rgb(var(--watch-video-bg) / <alpha-value>)",
+				watchVideoBorder: "rgb(var(--watch-video-border) / <alpha-value>)",
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
@@ -51,10 +59,6 @@ const config: Config = {
 				popover: {
 					DEFAULT: 'hsl(var(--popover))',
 					foreground: 'hsl(var(--popover-foreground))'
-				},
-				primary: {
-					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',

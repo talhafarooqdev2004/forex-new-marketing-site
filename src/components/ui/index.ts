@@ -4,3 +4,4 @@ export * from "./dialog";
 export * from "./form";
 export * from "./command";
 export * from "./popover";
+export * from "./switch";

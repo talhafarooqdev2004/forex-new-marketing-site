@@ -19,19 +19,19 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        login: "text-[#99A1AF]",
+        login: "text-headerLoginText",
         "get-started":
-          "bg-[#00C663] rounded-3xl font-semibold",
+          "bg-[#00C663] rounded-3xl font-semibold text-white",
         "hero-get-started":
-          "bg-[#00C663] rounded-xl font-normal text-base",
+          "bg-[#00C663] rounded-xl font-normal text-base text-white",
         "watch-video":
-          "bg-[rgba(255,255,255,0.05)] border border-solid border-[rgba(255,255,255,0.10)] rounded-xl text-base",
+          "bg-watchVideoBg border border-solid border-watchVideoBorder rounded-xl text-base [&_svg]:size-8",
         "get-started-in-minutes":
-          "bg-[#1A1A1A] rounded-3xl border border-solid border-[rgba(0,166,62,0.30)] text-base text-greenDark",
+          "rounded-3xl border border-solid text-base text-greenDark bg-white border-[rgba(0,166,62,0.3)] dark:bg-[#1A1A1A] dark:border-[rgba(0,166,62,0.30)]",
         "newsletter-subscribe":
-          "bg-[#00C663] rounded-2xl",
-        "dialog-switch": "text-lg font-semibold text-[#FFFFFF80] border-b-2 border-transparent transition-colors rounded-none",
-        "auth-submit": "bg-[#00E37166] border border-greenDark",
+          "bg-[#00C663] rounded-2xl text-white",
+        "dialog-switch": "text-lg font-semibold text-[rgba(156,163,175,1)] dark:text-[#FFFFFF80] border-b-2 border-transparent transition-colors rounded-none",
+        "auth-submit": "bg-[rgb(37,198,100)] !text-white",
       },
       size: {
         default: "h-12 px-4 py-2",
@@ -61,12 +61,18 @@ export interface ButtonProps
   asChild?: boolean
 }
 
+const greenGetStartedVariants = ["get-started", "hero-get-started", "newsletter-subscribe"] as const;
+
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button"
+    const isGreenGetStarted = variant && greenGetStartedVariants.includes(variant as typeof greenGetStartedVariants[number]);
+    const isAuthSubmit = variant === "auth-submit";
     return (
       <Comp
         className={cn(buttonVariants({ variant, size }), className)}
+        data-get-started={isGreenGetStarted ? "true" : undefined}
+        data-auth-submit={isAuthSubmit ? "true" : undefined}
         ref={ref}
         {...props}
       />

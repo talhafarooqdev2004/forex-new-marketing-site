@@ -21,7 +21,7 @@ const DialogOverlay = React.forwardRef<
   <DialogPrimitive.Overlay
     ref={ref}
     className={cn(
-      "fixed inset-0 z-50 bg-black/80  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+      "fixed inset-0 z-50 bg-black/80 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       className
     )}
     {...props}
@@ -35,7 +35,7 @@ const DialogContent = React.forwardRef<
 >(({ className, variant = "default", children, ...props }, ref) => {
   const variants = {
     default: "bg-background max-w-lg",
-    "auth-form": "bg-darkGrey max-w-2xl !pt-12",
+    "auth-form": "bg-[rgb(246,247,249)] dark:bg-darkGrey text-foreground max-w-2xl !pt-12 shadow-lg",
   };
 
   return (

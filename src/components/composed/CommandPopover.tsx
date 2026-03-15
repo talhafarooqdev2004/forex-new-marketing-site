@@ -56,7 +56,8 @@ export default function CommandPopover({ control }: { control: any }) {
                                 <FormControl>
                                     <Button
                                         role="combobox"
-                                        className="w-full justify-between"
+                                        variant="outline"
+                                        className="w-full justify-between h-12 rounded-md bg-white dark:bg-charcoal border border-[rgba(30,41,57,0.12)] dark:border-input text-foreground dark:text-white font-normal"
                                     >
                                         {field.value ? (
                                             <span className="flex items-center gap-2">

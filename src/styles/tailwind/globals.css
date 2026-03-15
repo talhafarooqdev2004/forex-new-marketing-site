@@ -43,18 +43,27 @@
     @apply xl:text-base 3xl:text-lg;
   }
   
-  /* shadcn  */
+  /* Light theme (default) – same as forex-dashboard */
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    --primary: 59 130 246;
+    --secondary: 22, 22, 22, 1;
+    --background: 246 247 249;
+    --foreground: 18 18 24;
+    --charcoal: 246 247 249;
+    --dark-grey: 255 255 255;
+    --stroke: 226 232 240;
+    --green: 0 255 127;
+    --green-ii: 0 227 113;
+    --green-dark: 0 198 99;
+    --switch-track: 148 163 184;
+    --input-bg: 246 247 249;
+    --section-bg: 246 247 249;
+    --cta-bg: 235 239 239;
+    /* shadcn (HSL) for components that use hsl(var(...)) */
     --card: 0 0% 100%;
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
     --muted: 0 0% 96.1%;
     --muted-foreground: 0 0% 45.1%;
     --accent: 0 0% 96.1%;
@@ -70,18 +79,33 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    --header-login-text: 85 78 78;
+    --watch-video-bg: 218 221 226;
+    --watch-video-border: 203 208 216;
   }
-  .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
+  html.dark {
+    --primary: 59 130 246;
+    --secondary: 156 163 175;
+    --background: 18 18 24;
+    --foreground: 255 255 255;
+    --charcoal: 18 20 23;
+    --dark-grey: 30 30 40;
+    --stroke: 60 60 75;
+    --green: 0 255 127;
+    --green-ii: 0 227 113;
+    --green-dark: 0 198 99;
+    --switch-track: 51 65 85;
+    --input-bg: 31 34 39;
+    --section-bg: 11 12 14;
+    --cta-bg: 18 20 23;
+    --header-login-text: 153 161 175;
+    --watch-video-bg: 55 58 64;
+    --watch-video-border: 75 78 85;
+    /* shadcn dark */
     --card: 0 0% 3.9%;
     --card-foreground: 0 0% 98%;
     --popover: 0 0% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
     --muted: 0 0% 14.9%;
     --muted-foreground: 0 0% 63.9%;
     --accent: 0 0% 14.9%;
@@ -106,6 +130,17 @@
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-arimo);
-    color: white;
+    color: rgb(var(--foreground));
+  }
+}
+
+/* Force white text on Get Started (green) buttons in both themes */
+@layer components {
+  [data-get-started="true"] {
+    color: #ffffff !important;
+  }
+  /* Force white text on form submit buttons */
+  [data-auth-submit="true"] {
+    color: #ffffff !important;
   }
 }

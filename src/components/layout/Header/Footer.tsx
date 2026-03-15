@@ -1,14 +1,24 @@
+"use client";
+
 import { Button, Input } from "@/components/ui";
+import { useTheme } from "@/components/providers/ThemeProvider";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
+    const { theme } = useTheme();
+
     return (
-        <footer className="bg-grey px-6 py-20">
+        <footer className="bg-sectionBg px-6 py-20">
             <div className="flex flex-wrap items-start justify-between gap-14">
                 <div className="flex flex-col gap-4 flex-1">
                     <Link href="/">
-                        <Image src="/images/brand-logo.png" alt="Brand logo" width={70} height={70} />
+                        <Image
+                            src={theme === "light" ? "/images/brand-logo-black.png" : "/images/brand-logo.png"}
+                            alt="Brand logo"
+                            width={70}
+                            height={70}
+                        />
                     </Link>
 
                     <p className="text-[#6A7282]">

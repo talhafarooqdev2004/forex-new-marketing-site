@@ -2,11 +2,23 @@
 
 import { Footer, Header } from "@/components/layout/Header";
 import { Button } from "@/components/ui";
+import { useTheme } from "@/components/providers/ThemeProvider";
 import Container from "@/components/ui/layout/Container";
 import Image from "next/image";
 import { useState } from "react";
 import { ForgotPasswordDialog, LoginDialog, RegisterDialog } from "./dialogs";
 import { AuthDialogType } from "@/types";
+
+function WatchVideoIcon() {
+    const { theme } = useTheme();
+    const color = theme === "light" ? "#121417" : "white";
+    return (
+        <svg className="!w-6 !h-6 shrink-0" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 16C0 7.16344 7.16344 0 16 0C24.8366 0 32 7.16344 32 16C32 24.8366 24.8366 32 16 32C7.16344 32 0 24.8366 0 16Z" fill={color} fillOpacity="0.1" />
+            <path d="M12 10L21.3333 16L12 22V10Z" fill={color} stroke={color} strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+    );
+};
 
 export default function HomeClientPage() {
     const [currentDialog, setCurrentDialog] = useState<AuthDialogType>(null);
@@ -15,7 +27,7 @@ export default function HomeClientPage() {
         <Container>
             <Header setCurrentDialog={setCurrentDialog} />
 
-            <div className="bg-grey">
+            <div className="bg-sectionBg">
                 <HeroSection setCurrentDialog={setCurrentDialog} />
 
                 <ForexStrategies>
@@ -144,11 +156,7 @@ function HeroSection({ setCurrentDialog }: { setCurrentDialog: (current: AuthDia
                         </svg>
                     </Button>
                     <Button variant="watch-video" size="watch-video">
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0 16C0 7.16344 7.16344 0 16 0C24.8366 0 32 7.16344 32 16C32 24.8366 24.8366 32 16 32C7.16344 32 0 24.8366 0 16Z" fill="white" fillOpacity="0.1" />
-                            <path d="M12 10L21.3333 16L12 22V10Z" fill="white" stroke="white" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-
+                        <WatchVideoIcon />
                         Watch Video
                     </Button>
                 </div>
@@ -186,7 +194,7 @@ function ForexStrategy({
     children: React.ReactNode
 }) {
     return (
-        <div className="bg-darkGrey rounded-2xl p-6 flex flex-col gap-6">
+        <div className="bg-white rounded-2xl p-6 flex flex-col gap-6 shadow-sm border border-[rgba(30,41,57,0.6)] dark:border-transparent dark:shadow-none dark:bg-darkGrey">
             <div className="flex items-center justify-between">
                 <h6 className="text-xl">{title}</h6>
                 <span className="text-[#6A7282] text-sm">{smallTitle}</span>
@@ -198,7 +206,7 @@ function ForexStrategy({
 
 function CTASection({ setCurrentDialog }: { setCurrentDialog: (current: AuthDialogType) => void }) {
     return (
-        <div className="bg-charcoal py-20">
+        <div className="bg-ctaBg py-20">
             <div className="max-w-5xl mx-auto">
                 <div className="text-center">
                     <h4>Start Trading Forex the Smart Way</h4>
@@ -217,8 +225,9 @@ function CTASection({ setCurrentDialog }: { setCurrentDialog: (current: AuthDial
                     <Button
                         variant="watch-video"
                         size="watch-video"
-                        className="px-10"
+                        className="px-10 bg-[rgb(218,221,226)] dark:bg-watchVideoBg border-[rgb(203,208,216)] dark:border-watchVideoBorder"
                     >
+                        <WatchVideoIcon />
                         Watch Video
                     </Button>
                 </div>
